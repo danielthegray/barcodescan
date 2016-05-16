@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProductBarcodeScanner.DataAccess.Loaders;
 
 namespace ProductBarcodeScanner
 {
@@ -15,6 +16,16 @@ namespace ProductBarcodeScanner
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.GetInstance();
         }
     }
 }

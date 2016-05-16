@@ -34,7 +34,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             Source source = new Source();
             source.id = int.Parse(result[4]);
             source.name = result[5];
-            product.source = source;
+            //product.source = source;
             return product;
         }
 
