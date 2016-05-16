@@ -30,12 +30,12 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             return _instance;
         }
 
-        public List<String> Query(String query)
+        public List<String> Query(String sql)
         {
             return null;
         }
 
-        public void Execute(String query)
+        public void Execute(String sql)
         {
 
         }
