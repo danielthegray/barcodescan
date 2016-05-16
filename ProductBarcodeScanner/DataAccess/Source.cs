@@ -8,5 +8,7 @@ namespace ProductBarcodeScanner.DataAccess
 {
     class Source
     {
+        public int id;
+        public String name;
     }
 }
