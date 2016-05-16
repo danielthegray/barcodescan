@@ -53,7 +53,20 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
         public List<Product> GetAllProducts()
         {
             // return ALL the products in the database
-            return null;
+            List<Product> productList = new List<Product>();
+
+            var result = DatabaseHelper.GetInstance()
+                .Query("SELECT * FROM Product");
+
+            int productID;
+
+            foreach (KeyValuePair<string, object> entry in result)
+            {
+                Int32.TryParse(result["id"].ToString(), out productID);
+                productList.Add(this.GetProduct(productID));
+            }
+
+            return productList;
         }
 
         public Product GetProductByUPC(String upc)
