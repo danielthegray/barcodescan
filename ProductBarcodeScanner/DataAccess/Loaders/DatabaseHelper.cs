@@ -10,11 +10,13 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
 {
     public class DatabaseHelper
     {
+        private static SQLiteConnection dbConnection;
+
         private DatabaseHelper() // initializer/constructor
         {
             // CREATE CONNECTION TO THE SQLITE file
             // store the connection variable inside this object
-            SQLiteConnection dbConnection;
+            
             dbConnection = new SQLiteConnection("Data Source=BarcodeDB.sqlite;Version=3;");
             dbConnection.Open();
         }
@@ -37,7 +39,8 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
 
         public void Execute(String sql)
         {
-
+            SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+            command.ExecuteNonQuery();
         }
     }
 }
