@@ -42,6 +42,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             reader.Read();
             for (int i = 0; i < reader.FieldCount; i++)
             {
+                // We could do a .ToString here
                 result.Add(reader.GetName(i), reader.GetValue(i));
             }
             return result;

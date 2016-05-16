@@ -28,10 +28,12 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
                 .Query("SELECT * FROM Product "
                     +"JOIN Source ON Product.idSource = Source.id "
                     +"WHERE Product.id=" + id);
+
             Product product = new Product();
-            //product.name = result["name"]; // maybe result["name"] is available
-            //product.description = result[2]; // result["description"]
-            //product.upc = result["upc"];
+            // SQLiteDataReader returns objects. This is there the ToString() method comes from.
+            product.name = result["name"].ToString();
+            product.description = result["description"].ToString();
+            product.upc = result["upc"].ToString();
             //Source source = new Source();
             //source.id = int.Parse(result[4]);
             //source.name = result[5];
