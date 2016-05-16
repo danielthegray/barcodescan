@@ -32,9 +32,11 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             return _instance;
         }
 
-        public List<String> Query(String sql)
+        public SQLiteDataReader Query(String sql)
         {
-            return null;
+            SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+            return reader;
         }
 
         public void Execute(String sql)

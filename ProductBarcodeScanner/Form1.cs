@@ -27,5 +27,10 @@ namespace ProductBarcodeScanner
         {
             DatabaseHelper.GetInstance();
         }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.GetInstance().Execute("CREATE TABLE products (name VARCHAR(20), upc INT)");
+        }
     }
 }

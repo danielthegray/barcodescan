@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace ProductBarcodeScanner.DataAccess.Loaders
 {
@@ -28,12 +29,12 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
                     +"JOIN Source ON Product.idSource = Source.id "
                     +"WHERE Product.id=" + id);
             Product product = new Product();
-            product.name = result[1]; // maybe result["name"] is available
-            product.description = result[2]; // result["description"]
-            product.upc = result[3];
-            Source source = new Source();
-            source.id = int.Parse(result[4]);
-            source.name = result[5];
+            product.name = result["name"]; // maybe result["name"] is available
+            //product.description = result[2]; // result["description"]
+            product.upc = result["upc"];
+            //Source source = new Source();
+            //source.id = int.Parse(result[4]);
+            //source.name = result[5];
             //product.source = source;
             return product;
         }
