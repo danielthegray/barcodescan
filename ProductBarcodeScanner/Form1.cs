@@ -25,11 +25,14 @@ namespace ProductBarcodeScanner
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // We need a good way to specify a file to open.
+            // This is temporary code to test that an instance can be created.
             DatabaseHelper.GetInstance();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Is this the right place to put db setup code? I just used this to check the the method would run without errors
             DatabaseHelper.GetInstance().Execute("CREATE TABLE products (name VARCHAR(20), upc INT)");
         }
     }

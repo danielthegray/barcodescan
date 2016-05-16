@@ -34,6 +34,8 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             product.name = result["name"].ToString();
             product.description = result["description"].ToString();
             product.upc = result["upc"].ToString();
+            //product.id = result["id"]; // This is an int type... what do we do here?
+
             //Source source = new Source();
             //source.id = int.Parse(result[4]);
             //source.name = result[5];
