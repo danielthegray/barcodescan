@@ -29,9 +29,9 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
                     +"JOIN Source ON Product.idSource = Source.id "
                     +"WHERE Product.id=" + id);
             Product product = new Product();
-            product.name = result["name"]; // maybe result["name"] is available
+            //product.name = result["name"]; // maybe result["name"] is available
             //product.description = result[2]; // result["description"]
-            product.upc = result["upc"];
+            //product.upc = result["upc"];
             //Source source = new Source();
             //source.id = int.Parse(result[4]);
             //source.name = result[5];
