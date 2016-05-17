@@ -33,7 +33,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             // SQLiteDataReader returns objects. This is there the ToString() method comes from.
             product.name = result["name"].ToString();
             product.description = result["description"].ToString();
-            product.upc = result["upc"].ToString();
+            product.upc = result["upc"];
             //product.id = result["id"]; // This is an int type... what do we do here?
 
             //Source source = new Source();
@@ -62,6 +62,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
 
             foreach (KeyValuePair<string, object> entry in result)
             {
+                // It would be nice if we didn't need to do this parsing
                 Int32.TryParse(result["id"].ToString(), out productID);
                 productList.Add(this.GetProduct(productID));
             }

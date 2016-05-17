@@ -32,12 +32,12 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             return _instance;
         }
 
-        public Dictionary<string, object> Query(String sql)
+        public Dictionary<string, dynamic> Query(String sql)
         {
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
 
-            Dictionary<string, object> result = new Dictionary<string, object>();
+            Dictionary<string, dynamic> result = new Dictionary<string, dynamic>();
 
             reader.Read();
             for (int i = 0; i < reader.FieldCount; i++)
@@ -45,6 +45,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
                 // We could do a .ToString here
                 result.Add(reader.GetName(i), reader.GetValue(i));
             }
+            reader.Close();
 
             return result;
         }

@@ -12,6 +12,6 @@ namespace ProductBarcodeScanner.DataAccess
         public String name;
         public String description;
         //public Source source;
-        public String upc;
+        public int upc;
     }
 }
