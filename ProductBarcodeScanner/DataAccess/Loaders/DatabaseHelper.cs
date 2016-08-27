@@ -10,7 +10,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
 {
     public class DatabaseHelper
     {
-        private static SQLiteConnection dbConnection;
+        private SQLiteConnection dbConnection;
 
         private DatabaseHelper() // initializer/constructor
         {
@@ -21,7 +21,7 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             dbConnection.Open();
         }
 
-        private static DatabaseHelper _instance;
+        private static volatile DatabaseHelper _instance;
 
         public static DatabaseHelper GetInstance()
         {
@@ -32,22 +32,21 @@ namespace ProductBarcodeScanner.DataAccess.Loaders
             return _instance;
         }
 
-        public Dictionary<string, dynamic> Query(String sql)
+        public IDbConnection GetConnection()
         {
-            SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-            SQLiteDataReader reader = command.ExecuteReader();
+            return dbConnection;
+        }
 
-            Dictionary<string, dynamic> result = new Dictionary<string, dynamic>();
-
-            reader.Read();
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                // We could do a .ToString here
-                result.Add(reader.GetName(i), reader.GetValue(i));
-            }
-            reader.Close();
-
-            return result;
+        // note that I am not returning an SQLiteCommand in the method signature!!
+        // This is a general IDbCommand interface type.  This would let us change
+        // the database type more easily in the future without retyping all the code
+        // everywhere... since most other libraries for other database providers
+        // all implement this interface, as long as we use the interface, the actual
+        // objects that are being called don't matter (the other code doesn't care
+        // if the database is SQLite or SQL Server).
+        public IDbCommand BuildCommandForQueryString(String query)
+        {
+            return new SQLiteCommand(query, dbConnection);
         }
 
         public void Execute(String sql)

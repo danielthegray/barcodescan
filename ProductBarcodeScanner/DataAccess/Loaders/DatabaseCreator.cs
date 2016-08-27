@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductBarcodeScanner.DataAccess
+namespace ProductBarcodeScanner.DataAccess.Loaders
 {
-    class Source
+    public static class DatabaseCreator
     {
-        public int id;
-        public String name;
+
+        // TODO add table creation scriptss
     }
 }

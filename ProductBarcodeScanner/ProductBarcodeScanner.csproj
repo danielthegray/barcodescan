@@ -67,10 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Loaders\DatabaseCreator.cs" />
     <Compile Include="DataAccess\Loaders\DatabaseHelper.cs" />
-    <Compile Include="DataAccess\Loaders\ProductLoader.cs" />
-    <Compile Include="DataAccess\Product.cs" />
-    <Compile Include="DataAccess\Source.cs" />
+    <Compile Include="DataAccess\Loaders\ProductHandler.cs" />
+    <Compile Include="DataAccess\Model\Product.cs" />
+    <Compile Include="DataAccess\Model\Provider.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
